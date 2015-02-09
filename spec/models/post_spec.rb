@@ -5,5 +5,6 @@ RSpec.describe Post, :type => :model do
 
   it 'spec_name' do
     expect(1).to eq 1
+
   end
 end
