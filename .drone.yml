@@ -1,12 +1,14 @@
-image: ruby:2.1
+image: bradrydzewski/ruby:2.0.0
+services:
+  - mdillon/postgis:9.4
 script:
   - mkdir -p /tmp/bundle
   - sudo chown -R ubuntu:ubuntu /tmp/bundle
-  - bundle install --path /tmp/bundle
-  - cp database.yml.example config/database.yml
-  - bundle exec rake db:create db:migrate
+  - gem install bundler
+  - bundle install -j8 --path /tmp/bundle
+  - cp config/database.yml.example config/database.yml
+  - bundle exec rake db:create db:migrate RAILS_ENV=test
   - bundle exec rspec
 cache:
   - /tmp/bundle
-services:
-  - postgresql
+

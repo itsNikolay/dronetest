@@ -1,9 +1,8 @@
 test: &test
   host: localhost
-  template: template0
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: test
   username: postgres
-  password:
+  password: 
   port: 5432
